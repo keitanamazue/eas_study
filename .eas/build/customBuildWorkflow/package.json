@@ -1,0 +1,14 @@
+{
+  "name": "custom-build-workflow",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "ncc build ./src/index.ts -o build/ --minify --no-cache --no-source-map-register"
+  },
+  "dependencies": {
+    "@expo/steps": "^1.0.29"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "^0.36.0",
+    "typescript": "^5.0.0"
+  }
+}

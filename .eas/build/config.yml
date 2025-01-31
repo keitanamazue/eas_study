@@ -1,0 +1,11 @@
+build:
+  name: Custom Build with TypeScript
+  steps:
+    - eas/checkout
+    - eas/install_node_modules
+    - custom_build_workflow
+
+functions:
+  custom_build_workflow:
+    name: Custom Build Workflow
+    path: ./customBuildWorkflow

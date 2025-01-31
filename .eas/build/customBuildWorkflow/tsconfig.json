@@ -4,7 +4,10 @@
     "strict": true,
     "paths": {
       "@/*": ["./*"]
-    }
+    },
+    "target": "ES6",
+    "module": "CommonJS",
+    "outDir": "./build"
   },
   "include": [
     "**/*.ts",

@@ -1,0 +1,15 @@
+{
+  "expo": {
+    "extra": {
+      "eas": {
+        "projectId": "0c61308a-54e3-42c9-916e-9446c0cdca4e"
+      }
+    },
+    "ios": {
+      "bundleIdentifier": "com.keitanamazue.custombuildworkflow",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
+    }
+  }
+}
