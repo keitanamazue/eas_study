@@ -36,6 +36,15 @@
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "d6608741-69a5-4329-ae70-6a623c001c82"
+      }
+    },
+    "owner": "keitanamazue"
   }
 }
