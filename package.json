@@ -12,9 +12,9 @@
     "lint": "expo lint",
     "eas-build-pre-install": "echo 'Starting Build...'",
     "eas-build-post-install": "echo 'Dependencies Installed'",
-    "eas-build-on-success": "./slack-notify.sh success",
-    "eas-build-on-error": "./slack-notify.sh error",
-    "eas-build-on-cancel": "./slack-notify.sh cancel"
+    "eas-build-on-success": "set -o allexport; source .env; set +o allexport; ./slack-notify.sh SUCCESS $EAS_BUILD_LOG",
+    "eas-build-on-error": "set -o allexport; source .env; set +o allexport; ./slack-notify.sh ERROR $EAS_BUILD_LOG",
+    "eas-build-on-cancel": "set -o allexport; source .env; set +o allexport; ./slack-notify.sh CANCEL $EAS_BUILD_LOG"
   },
   "jest": {
     "preset": "jest-expo"

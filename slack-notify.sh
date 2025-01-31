@@ -1,24 +1,28 @@
 #!/bin/bash
 
-# Slack Webhook URL
-SLACK_WEBHOOK_URL="https://hooks.slack.com/services/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"
+# 🚀 `.env` ファイルを読み込む（環境変数として適用）
+if [ -f .env ]; then
+  export $(grep -v '^#' .env | xargs)
+fi
 
-# 📝 Slack チャンネル名（#channel-name 形式で記述）
-CHANNEL="#_n_expo_notification"
+# 🛠️ 必要な環境変数があるかチェック
+if [ -z "$SLACK_WEBHOOK_URL" ]; then
+  echo "❌ SLACK_WEBHOOK_URL が設定されていません！ .env に追加してください。"
+  exit 1
+fi
 
-# 🛠️ メッセージのタイプ（成功・失敗・キャンセル）
+# 📌 メッセージを作成
 STATUS=$1
+LOG_FILE=$2  # ログファイルのパス
+CHANNEL="#_n_expo_notification"
+LOG_CONTENT=$(tail -n 20 "$LOG_FILE" 2>/dev/null)
 
-# 💬 通知メッセージ
 MESSAGE="*EAS Build ${STATUS}*\n📌 *Project:* $(basename $(pwd))\n⏳ *Date:* $(date)\n\`\`\`${LOG_CONTENT}\`\`\`"
 
-# 📦 Slack 送信用 JSON データを作成
-PAYLOAD="{
+# 🚀 Slack に通知を送信
+curl -X POST -H 'Content-type: application/json' --data "{
   \"channel\": \"$CHANNEL\",
   \"text\": \"$MESSAGE\",
   \"username\": \"EAS Build Bot\",
   \"icon_emoji\": \":rocket:\"
-}"
-
-# 🚀 Slack に通知を送信
-curl -X POST -H 'Content-type: application/json' --data "$PAYLOAD" "$SLACK_WEBHOOK_URL"
+}" "$SLACK_WEBHOOK_URL"
