@@ -30,7 +30,7 @@ export default function HomeScreen() {
               android: 'cmd + m',
               web: 'F12'
             })}
-          </ThemedText>{' '}
+          </ThemedText>{' '}a
           to open developer tools.
         </ThemedText>
       </ThemedView>
